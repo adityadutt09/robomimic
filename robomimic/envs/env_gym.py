@@ -134,9 +134,12 @@ class EnvGym(EB.EnvBase):
         state = np.array(self.env.sim.get_state().flatten()) # simulator state
         return dict(model=xml, states=state)
 
-    def get_reward(self):
+    def get_reward(self, action=None):
         """
         Get current reward.
+
+        Args:
+            action: action taken (unused for gym environments).
         """
         assert self._current_reward is not None
         return self._current_reward

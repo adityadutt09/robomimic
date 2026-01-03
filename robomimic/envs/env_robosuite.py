@@ -372,11 +372,14 @@ class EnvRobosuite(EB.EnvBase):
             info["ep_meta"] = json.dumps(self.env.get_ep_meta(), indent=4)
         return info
 
-    def get_reward(self):
+    def get_reward(self, action=None):
         """
         Get current reward.
+
+        Args:
+            action (np.array): action taken. Required for robosuite v1.5+ environments.
         """
-        return self.env.reward()
+        return self.env.reward(action)
 
     def get_goal(self):
         """
