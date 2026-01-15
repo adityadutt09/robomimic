@@ -229,12 +229,15 @@ def set_mod_settings(generator, args):
             group=-1,
             values=[500],
         )
+        # Note: num_data_workers must be 0 when hdf5_cache_mode is None because
+        # h5py file handles cannot be pickled for multiprocessing workers.
+        # Use "low_dim" cache mode with workers > 0 if faster loading is needed.
         if "train.num_data_workers" not in generator.parameters:
             generator.add_param(
                 key="train.num_data_workers",
                 name="",
                 group=-1,
-                values=[5],
+                values=[0],
             )
         generator.add_param(
             key="train.hdf5_cache_mode",

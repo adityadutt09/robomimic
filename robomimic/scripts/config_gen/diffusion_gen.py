@@ -4,7 +4,8 @@ from robomimic.scripts.config_gen.config_gen_utils import *
 def make_generator_helper(args):
     algo_name_short = "diffusion_policy"
 
-    args.abs_actions = True
+    # Use delta/relative actions with OSC POSE controller
+    args.abs_actions = False
 
     generator = get_generator(
         algo_name="diffusion_policy",
