@@ -28,6 +28,12 @@ import traceback
 
 from collections import OrderedDict
 
+# Import mimicgen to register its environments (e.g., CoffeePreparation_D1)
+try:
+    import mimicgen
+except ImportError:
+    pass  # mimicgen not installed, skip
+
 import torch
 from torch.utils.data import DataLoader
 
